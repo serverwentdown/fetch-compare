@@ -54,7 +54,20 @@ export default class PlatformBrowser implements Platform {
 		const client = await WebDriver.newSession({
 			logLevel: 'warn',
 			port,
-			capabilities: {browserName: this.name},
+			capabilities: {
+				browserName: this.name,
+				'goog:chromeOptions': {
+					args: [
+						'--disable-infobars',
+						'--headless',
+						'--disable-gpu',
+						'--window-size=1440,735',
+					],
+				},
+				'moz:firefoxOptions': {
+					args: ['-headless'],
+				},
+			},
 		});
 
 		await client.navigateTo(`${ctx.fixturesURL}/index.html`);
