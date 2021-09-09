@@ -5,7 +5,7 @@
 	"author": "Ambrose Chua",
 	"license": "MIT",
 	"scripts": {
-		"start": "node --loader ts-node/esm src/index.ts",
+		"start": "node --loader ts-node/esm --no-warnings src/index.ts",
 		"type-check": "tsc --pretty --noEmit",
 		"format": "prettier --ignore-path ../.gitignore --write .",
 		"lint": "xo"
