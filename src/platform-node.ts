@@ -12,6 +12,7 @@ export default class PlatformNode implements Platform {
 		);
 		const result: Result = await new Promise((resolve, reject) => {
 			child.once('error', reject);
+			child.once('exit', reject);
 			child.once('message', resolve);
 		});
 		child.kill();

@@ -4,8 +4,17 @@ const tests = {
 		async invalidURL() {
 			try {
 				new Request('http://example.com%');
-			} catch ({name, message}) {
-				return {name, message};
+				return {error: null};
+			} catch (error) {
+				return {error: error.toString()};
+			}
+		},
+		async rejectCredentials() {
+			try {
+				new Request('http://user:pass@example.com');
+				return {error: null};
+			} catch (error) {
+				return {error: error.toString()};
 			}
 		},
 	},

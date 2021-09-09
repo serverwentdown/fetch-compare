@@ -10,8 +10,11 @@ global.fetch = fetch;
 
 async function main(file) {
 	const tests = await import('./' + file + '.js');
-	const result = await run.default(tests.default);
+	const result = await run(tests.default);
 	process.send(result);
 }
 
-main(process.argv[2]);
+main(process.argv[2])
+.catch((error) => {
+	log.error(error);
+});

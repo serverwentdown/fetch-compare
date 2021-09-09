@@ -46,7 +46,7 @@ function* tabularResults(results: Record<string, Result>): Iterable<string[]> {
 			yield [
 				`${group}:${result}:${key}`,
 				n,
-				results[n][group][result][key].toString(),
+				results[n][group][result][key]?.toString() ?? 'null',
 			];
 		}
 	}

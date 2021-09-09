@@ -1,4 +1,4 @@
-export type ResultObject = Record<string, string | number>;
+export type ResultObject = Record<string, string | number | null>;
 export type Result = Record<string, Record<string, ResultObject>>;
 
 export interface Context {

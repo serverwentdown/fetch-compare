@@ -11,6 +11,7 @@ export default class PlatformDeno implements Platform {
 		const child = cp.spawn(binary, []);
 		await new Promise((resolve, reject) => {
 			child.once('error', reject);
+			child.once('exit', reject);
 			child.once('spawn', resolve);
 		});
 		child.kill();
