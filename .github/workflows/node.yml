@@ -52,9 +52,9 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
         node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-      exclude:
-        - {os: windows-latest, node: 16.x}
-        - {os: macOS-latest, node: 16.x}
+        exclude:
+          - {os: windows-latest, node: 16.x}
+          - {os: macOS-latest, node: 16.x}
 
     steps:
       - uses: actions/checkout@v2

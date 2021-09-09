@@ -50,8 +50,7 @@ export default class PlatformBrowser implements Platform {
 		this.silent = silent;
 	}
 
-	async run(ctx: Context, file: string): Promise<Result> {
-		const {child, port} = await start(this.driver, this.silent);
+	async interact(ctx: Context, file: string, port: number): Promise<Result> {
 		const client = await WebDriver.newSession({
 			logLevel: 'warn',
 			port,
@@ -75,7 +74,17 @@ export default class PlatformBrowser implements Platform {
 		)) as Result;
 
 		await client.deleteSession();
-		await stop(child);
 		return result;
+	}
+
+	async run(ctx: Context, file: string): Promise<Result> {
+		const {child, port} = await start(this.driver, this.silent);
+		try {
+			const result = await this.interact(ctx, file, port);
+			await stop(child);
+			return result;
+		} finally {
+			await stop(child);
+		}
 	}
 }
