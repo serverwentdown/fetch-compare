@@ -1,4 +1,9 @@
-export type ResultObject = Record<string, string | number | null>;
+export type ResultObject =
+	| string
+	| number
+	| null
+	| undefined
+	| Record<string, unknown>;
 export type Result = Record<string, Record<string, ResultObject>>;
 
 export interface Context {

@@ -1,7 +1,7 @@
 import logger from '@wdio/logger';
 import Table from 'cli-table3';
 
-import {Platform, Result, Context} from './types';
+import {Platform, Result, ResultObject, Context} from './types';
 import PlatformBrowser from './platform-browser';
 import PlatformNode from './platform-node';
 import PlatformDeno from './platform-deno';
@@ -9,7 +9,7 @@ import {chrome, firefox, safari} from './browser-drivers';
 import {FixturesServer} from './server';
 
 const log = logger('fetch-compare');
-logger.setLevel('fetch-compare', 'info');
+logger.setLevel('fetch-compare', 'warn');
 
 const silent = true;
 const platforms: Record<string, Platform> = {
@@ -20,15 +20,28 @@ const platforms: Record<string, Platform> = {
 	deno: new PlatformDeno(),
 };
 
-function* tabularNames(reference: Result): Iterable<[string, string, string]> {
+function formatValue(v: ResultObject): string {
+	if (v === null) {
+		return 'null';
+	}
+
+	if (v === undefined) {
+		return 'undefined';
+	}
+
+	if (typeof v === 'string' || typeof v === 'number') {
+		return v.toString();
+	}
+
+	return JSON.stringify(v);
+}
+
+function* tabularNames(reference: Result): Iterable<[string, string]> {
 	/* eslint-disable guard-for-in */
 	for (const groupName in reference) {
 		const results = reference[groupName];
 		for (const resultName in results) {
-			const resultObject = results[resultName];
-			for (const key in resultObject) {
-				yield [groupName, resultName, key];
-			}
+			yield [groupName, resultName];
 		}
 	}
 	/* eslint-enable guard-for-in */
@@ -41,13 +54,9 @@ function* tabularResults(results: Record<string, Result>): Iterable<string[]> {
 	}
 
 	const names = Object.keys(results);
-	for (const [group, result, key] of tabularNames(ref)) {
+	for (const [group, result] of tabularNames(ref)) {
 		for (const n of names) {
-			yield [
-				`${group}:${result}:${key}`,
-				n,
-				results[n][group][result][key]?.toString() ?? 'null',
-			];
+			yield [`${group}:${result}`, n, formatValue(results[n][group][result])];
 		}
 	}
 }
@@ -68,6 +77,7 @@ async function run() {
 	/* eslint-disable guard-for-in, no-await-in-loop */
 	for (const name in platforms) {
 		try {
+			log.debug(name, 'starting');
 			results[name] = await platforms[name].run(ctx, 'all');
 			log.debug(name, results[name]);
 		} catch (error: unknown) {
