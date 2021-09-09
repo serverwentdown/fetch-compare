@@ -15,5 +15,5 @@ async function main(file) {
 }
 
 main(process.argv[2]).catch((error) => {
-	log.error(error);
+	console.error(error);
 });
