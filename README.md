@@ -1,4 +1,3 @@
-
 # Comparing `fetch()` implementations
 
 A small project comparing `fetch()` implementations across various platforms
@@ -14,6 +13,5 @@ Browser testing is done using [`webdriver`](https://github.com/webdriverio/webdr
 - Node.js
   - `node-fetch`
 - Deno (TODO)
-
 
 <!-- vim: set conceallevel=2 et ts=2 sw=2: -->

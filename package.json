@@ -42,6 +42,11 @@
 	},
 	"xo": {
 		"prettier": true,
-		"globals": ["Request", "Response", "Headers", "fetch"]
+		"globals": [
+			"Request",
+			"Response",
+			"Headers",
+			"fetch"
+		]
 	}
 }

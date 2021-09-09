@@ -70,7 +70,7 @@ async function run() {
 		try {
 			results[name] = await platforms[name].run(ctx, 'all');
 			log.debug(name, results[name]);
-		} catch (error: Error) {
+		} catch (error: unknown) {
 			log.error(name, error);
 		}
 	}

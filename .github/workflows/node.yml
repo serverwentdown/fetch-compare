@@ -68,6 +68,4 @@ jobs:
       - run: npm run lint --if-present
       # TODO: Generate and publish a HTML artifact
       - run: npm start
-
-
 # vim: set et ts=2 sw=2:
