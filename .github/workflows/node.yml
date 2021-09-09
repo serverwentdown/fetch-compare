@@ -10,7 +10,7 @@ on:
     branches: [main]
 
 jobs:
-  format:
+  format+lint:
     runs-on: ubuntu-latest
 
     timeout-minutes: 5
@@ -46,7 +46,34 @@ jobs:
             git push
           fi
 
-  test:
+  typecheck:
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 5
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache@v2
+        with:
+          path: '~/.npm'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci
+      - run: npm run type-check --if-present
+
+  run:
     runs-on: ${{ matrix.os }}
 
     timeout-minutes: 10
@@ -73,9 +100,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
-      - run: npm run type-check --if-present
-      - run: npm run format --if-present
-      - run: npm run lint --if-present
       # TODO: Generate and publish a HTML artifact
       - run: npm start
 # vim: set et ts=2 sw=2:
