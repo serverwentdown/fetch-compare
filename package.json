@@ -1,0 +1,47 @@
+{
+	"name": "fetch-compare",
+	"version": "0.1.0",
+	"description": "Compare various implementations of the WHATWG fetch API",
+	"author": "Ambrose Chua",
+	"license": "MIT",
+	"scripts": {
+		"start": "node --loader ts-node/esm src/index.ts",
+		"type-check": "tsc --pretty --noEmit",
+		"format": "prettier --ignore-path ../.gitignore --write .",
+		"lint": "xo"
+	},
+	"dependencies": {
+		"@swc/core": "^1.2.85",
+		"@wdio/logger": "^7.7.0",
+		"chromedriver": "^93.0.1",
+		"cli-table3": "^0.6.0",
+		"deno-prebuilt": "^1.0.4",
+		"geckodriver": "^2.0.4",
+		"get-port": "^5.1.1",
+		"koa": "^2.13.1",
+		"koa-files": "^1.0.3",
+		"node-fetch": "^3.0.0",
+		"tcp-port-used": "^1.0.2",
+		"ts-node": "^10.2.1",
+		"webdriver": "^7.12.2"
+	},
+	"devDependencies": {
+		"@types/koa": "^2.13.4",
+		"@types/node": "^16.9.0",
+		"prettier": "^2.4.0",
+		"typescript": "^4.4.2",
+		"xo": "^0.44.0"
+	},
+	"prettier": {
+		"semi": true,
+		"useTabs": true,
+		"trailingComma": "all",
+		"singleQuote": true,
+		"bracketSpacing": false,
+		"jsxBracketSameLine": false
+	},
+	"xo": {
+		"prettier": true,
+		"globals": ["Request", "Response", "Headers", "fetch"]
+	}
+}

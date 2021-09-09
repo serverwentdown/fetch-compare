@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"target": "es2020",
+		"types": ["node"],
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"strict": true
+	},
+	"exclude": ["node_modules"],
+	"ts-node": {
+		"transpileOnly": true,
+		"transpiler": "ts-node/transpilers/swc-experimental"
+	}
+}
