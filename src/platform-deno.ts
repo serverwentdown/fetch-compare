@@ -1,4 +1,4 @@
-import cp from 'node:child_process';
+import cp from 'child_process';
 // @ts-expect-error: Missing types
 import {binary} from 'deno-prebuilt';
 

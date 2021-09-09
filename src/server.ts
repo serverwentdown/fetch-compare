@@ -1,6 +1,6 @@
-import process from 'node:process';
-import net from 'node:net';
-import path from 'node:path';
+import process from 'process';
+import net from 'net';
+import path from 'path';
 
 import Koa from 'koa';
 import files from 'koa-files';

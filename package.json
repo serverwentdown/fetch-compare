@@ -42,6 +42,9 @@
 	},
 	"xo": {
 		"prettier": true,
+		"rules": {
+			"unicorn/prefer-node-protocol": "off"
+		},
 		"globals": [
 			"Request",
 			"Response",

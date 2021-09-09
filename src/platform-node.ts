@@ -1,6 +1,6 @@
-import process from 'node:process';
-import cp from 'node:child_process';
-import path from 'node:path';
+import process from 'process';
+import cp from 'child_process';
+import path from 'path';
 
 import {Platform, Result} from './types.js';
 
