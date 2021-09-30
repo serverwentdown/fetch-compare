@@ -14,11 +14,11 @@ logger.setLevel('fetch-compare', 'warn');
 
 const silent = true;
 const platforms: Record<string, Platform> = {
+	deno: new PlatformDeno(),
+	node: new PlatformNode(),
 	chrome: new PlatformBrowser(chrome, 'chrome', silent),
 	firefox: new PlatformBrowser(firefox, 'firefox', silent),
 	safari: new PlatformBrowser(safari, 'safari', silent),
-	node: new PlatformNode(),
-	deno: new PlatformDeno(),
 };
 
 function formatValue(v: ResultObject): string {

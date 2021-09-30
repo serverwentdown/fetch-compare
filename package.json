@@ -15,7 +15,6 @@
 		"@wdio/logger": "^7.7.0",
 		"chromedriver": "^93.0.1",
 		"cli-table3": "^0.6.0",
-		"deno-prebuilt": "^1.0.4",
 		"geckodriver": "^2.0.4",
 		"get-port": "^5.1.1",
 		"koa": "^2.13.1",
