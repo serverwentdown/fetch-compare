@@ -1,3 +1,4 @@
+import process from 'process';
 import path from 'path';
 import logger from '@wdio/logger';
 import Table from 'cli-table3';

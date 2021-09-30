@@ -42,19 +42,5 @@ export const firefox: BrowserDriver = {
 };
 export const safari: BrowserDriver = {
 	path: '/usr/bin/safaridriver',
-	args: (port: number, logLevel = 'warn') => {
-		const logLevelArg = {
-			trace: 'trace',
-			debug: 'debug',
-			info: 'info',
-			warn: 'warn',
-			error: 'error',
-			silent: 'fatal',
-		}[logLevel];
-		if (!logLevelArg) {
-			throw new Error('invalid log level');
-		}
-
-		return ['-p', `${port}`, '-l', `${logLevelArg}`];
-	},
+	args: (port: number, _logLevel = 'none') => ['-p', `${port}`],
 };

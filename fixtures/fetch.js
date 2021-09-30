@@ -9,7 +9,7 @@ const tests = {
 					signal: ctrl.signal,
 				});
 				const o = await response.json();
-				return `Cookie: ${o.headers['Cookie']}`;
+				return `Cookie: ${o.headers.Cookie}`;
 			} catch (error) {
 				return error.toString();
 			}
@@ -23,7 +23,7 @@ const tests = {
 					signal: ctrl.signal,
 				});
 				const o = await response.json();
-				return `Referer: ${o.headers['Referer']}`;
+				return `Referer: ${o.headers.Referer}`;
 			} catch (error) {
 				return error.toString();
 			}
@@ -51,7 +51,7 @@ const tests = {
 					signal: ctrl.signal,
 				});
 				const o = await response.json();
-				return `Date: ${o.headers['Date']}`;
+				return `Date: ${o.headers.Date}`;
 			} catch (error) {
 				return error.toString();
 			}
@@ -65,7 +65,7 @@ const tests = {
 					signal: ctrl.signal,
 				});
 				const o = await response.json();
-				return `Host: ${o.headers['Host']}`;
+				return `Host: ${o.headers.Host}`;
 			} catch (error) {
 				return error.toString();
 			}

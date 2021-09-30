@@ -46,6 +46,7 @@
 			"unicorn/prefer-node-protocol": "off"
 		},
 		"globals": [
+			"Deno",
 			"Request",
 			"Response",
 			"Headers",

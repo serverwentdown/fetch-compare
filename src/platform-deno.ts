@@ -1,13 +1,10 @@
 import {platform} from 'os';
 import {spawn} from 'child_process';
-import logger from '@wdio/logger';
 
-import {Platform, Result} from './types.js';
-
-const log = logger('fetch-compare');
+import {Platform, Context, Result} from './types.js';
 
 export default class PlatformDeno implements Platform {
-	async run(ctx: Record<string, any>, file: string): Promise<Result> {
+	async run(ctx: Context, file: string): Promise<Result> {
 		const child = spawn(
 			platform() === 'win32' ? 'deno.exe' : 'deno',
 			['run', '--allow-read', '--allow-net=httpbin.org', 'index-deno.js', file],
@@ -23,11 +20,12 @@ export default class PlatformDeno implements Platform {
 				if (code !== 0) {
 					reject(code);
 				}
+
 				resolve(stdout);
 			});
 		});
 		child.kill();
 
-		return JSON.parse(stdout);
+		return JSON.parse(stdout) as Result;
 	}
 }

@@ -6,7 +6,7 @@ import getPort from 'get-port';
 import tcpPortUsed from 'tcp-port-used';
 import WebDriver from 'webdriver';
 
-import {Platform, Result, BrowserDriver, Context} from './types.js';
+import {Platform, Context, Result, BrowserDriver} from './types.js';
 
 async function start(
 	driver: BrowserDriver,
