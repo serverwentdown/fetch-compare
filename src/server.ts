@@ -12,9 +12,9 @@ export class FixturesServer {
 
 	private server: net.Server | null = null;
 
-	constructor() {
+	constructor(path: string) {
 		this.koa = new Koa();
-		this.koa.use(files(path.join(process.cwd(), 'fixtures')));
+		this.koa.use(files(path));
 	}
 
 	async start(): Promise<ServerAddress> {

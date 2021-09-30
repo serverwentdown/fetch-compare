@@ -1,3 +1,4 @@
+import path from 'path';
 import logger from '@wdio/logger';
 import Table from 'cli-table3';
 
@@ -62,12 +63,15 @@ function* tabularResults(results: Record<string, Result>): Iterable<string[]> {
 }
 
 async function run() {
+	const fixturesPath = path.join(process.cwd(), 'fixtures');
+
 	// Set up fixtures server
-	const fixturesServer = new FixturesServer();
+	const fixturesServer = new FixturesServer(fixturesPath);
 	const addr = await fixturesServer.start();
 
 	// Shared data among platforms
 	const ctx: Context = {
+		fixturesPath,
 		fixturesURL: addr.base,
 	};
 
