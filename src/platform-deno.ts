@@ -13,7 +13,7 @@ export default class PlatformDeno implements Platform {
 			['run', '--allow-read', '--allow-net=httpbin.org', 'index-deno.js', file],
 			{cwd: ctx.fixturesPath, stdio: ['pipe', 'pipe', 'inherit']},
 		);
-		const stdout = await new Promise((resolve, reject) => {
+		const stdout = await new Promise<string>((resolve, reject) => {
 			let stdout = '';
 			child.stdout.on('data', (data) => {
 				stdout += data;

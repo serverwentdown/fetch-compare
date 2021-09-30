@@ -7,6 +7,7 @@ export type ResultObject =
 export type Result = Record<string, Record<string, ResultObject>>;
 
 export interface Context {
+	fixturesPath: string;
 	fixturesURL: string;
 }
 
