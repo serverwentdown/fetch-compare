@@ -19,7 +19,7 @@
 		"get-port": "^5.1.1",
 		"koa": "^2.13.1",
 		"koa-files": "^1.0.3",
-		"node-fetch": "^3.0.0",
+		"node-fetch": "^3.1.1",
 		"tcp-port-used": "^1.0.2",
 		"ts-node": "^10.2.1",
 		"webdriver": "^7.12.2"
