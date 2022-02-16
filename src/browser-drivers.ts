@@ -2,11 +2,11 @@
 import {path as chromepath} from 'chromedriver';
 import {path as firefoxpath} from 'geckodriver';
 
-import {BrowserDriver} from './types';
+import {BrowserDriver} from './types.js';
 
 export const chrome: BrowserDriver = {
 	path: chromepath as string,
-	args: (port: number, logLevel = 'warn') => {
+	args(port: number, logLevel = 'warn') {
 		const logLevelArg = {
 			trace: 'ALL',
 			debug: 'DEBUG',
@@ -24,7 +24,7 @@ export const chrome: BrowserDriver = {
 };
 export const firefox: BrowserDriver = {
 	path: firefoxpath,
-	args: (port: number, logLevel = 'warn') => {
+	args(port: number, logLevel = 'warn') {
 		const logLevelArg = {
 			trace: 'trace',
 			debug: 'debug',

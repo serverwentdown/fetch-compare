@@ -1,15 +1,16 @@
 import process from 'process';
 import path from 'path';
-import logger from '@wdio/logger';
+import loggerCompat from '@wdio/logger';
 import Table from 'cli-table3';
 
-import {Platform, Result, ResultObject, Context} from './types';
-import PlatformBrowser from './platform-browser';
-import PlatformNode from './platform-node';
-import PlatformDeno from './platform-deno';
-import {chrome, firefox, safari} from './browser-drivers';
-import {FixturesServer} from './server';
+import {Platform, Result, ResultObject, Context} from './types.js';
+import PlatformBrowser from './platform-browser.js';
+import PlatformNode from './platform-node.js';
+import PlatformDeno from './platform-deno.js';
+import {chrome, firefox, safari} from './browser-drivers.js';
+import {FixturesServer} from './server.js';
 
+const logger = loggerCompat.default
 const log = logger('fetch-compare');
 logger.setLevel('fetch-compare', 'warn');
 

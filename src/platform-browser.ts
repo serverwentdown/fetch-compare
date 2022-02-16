@@ -4,9 +4,11 @@ import path from 'path';
 import getPort from 'get-port';
 // @ts-expect-error: Missing types
 import tcpPortUsed from 'tcp-port-used';
-import WebDriver from 'webdriver';
+import WebDriverCompat from 'webdriver';
 
 import {Platform, Context, Result, BrowserDriver} from './types.js';
+
+const WebDriver = WebDriverCompat.default
 
 async function start(
 	driver: BrowserDriver,
@@ -28,7 +30,7 @@ async function start(
 		child.once('error', reject);
 		child.once('spawn', resolve);
 	});
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 	await tcpPortUsed.waitUntilUsed(port, 100, 10_000);
 	return {child, port};
 }

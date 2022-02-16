@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 export type ResultObject =
 	| string
 	| number

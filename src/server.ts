@@ -8,7 +8,7 @@ import {ServerAddress} from './types.js';
 export class FixturesServer {
 	private readonly koa: Koa;
 
-	private server: net.Server | null = null;
+	private server?: net.Server;
 
 	constructor(path: string) {
 		this.koa = new Koa();

@@ -4,6 +4,7 @@
 	"description": "Compare various implementations of the WHATWG fetch API",
 	"author": "Ambrose Chua",
 	"license": "MIT",
+	"type": "module",
 	"scripts": {
 		"start": "node --loader ts-node/esm --no-warnings src/index.ts",
 		"type-check": "tsc --pretty --noEmit",
@@ -11,26 +12,26 @@
 		"lint": "xo"
 	},
 	"dependencies": {
-		"@swc/core": "^1.2.85",
-		"@wdio/logger": "^7.7.0",
-		"chromedriver": "^93.0.1",
-		"cli-table3": "^0.6.0",
-		"geckodriver": "^2.0.4",
-		"get-port": "^5.1.1",
-		"koa": "^2.13.1",
-		"koa-files": "^1.0.3",
-		"node-fetch": "^3.1.1",
+		"@swc/core": "^1.2.140",
+		"@wdio/logger": "^7.16.0",
+		"chromedriver": "^98.0.1",
+		"cli-table3": "^0.6.1",
+		"geckodriver": "^3.0.1",
+		"get-port": "^6.0.0",
+		"koa": "^2.13.4",
+		"koa-files": "^2.0.0",
+		"node-fetch": "^3.2.0",
 		"tcp-port-used": "^1.0.2",
-		"ts-node": "^10.2.1",
-		"webdriver": "^7.12.2"
+		"ts-node": "^10.5.0",
+		"webdriver": "^7.16.14"
 	},
 	"devDependencies": {
 		"@types/koa": "^2.13.4",
-		"@types/node": "^16.9.0",
-		"node-abort-controller": "^3.0.0",
-		"prettier": "^2.4.0",
-		"typescript": "^4.4.2",
-		"xo": "^0.44.0"
+		"@types/node": "^17.0.18",
+		"node-abort-controller": "^3.0.1",
+		"prettier": "^2.5.1",
+		"typescript": "^4.6.1-rc",
+		"xo": "^0.48.0"
 	},
 	"prettier": {
 		"semi": true,
@@ -43,7 +44,8 @@
 	"xo": {
 		"prettier": true,
 		"rules": {
-			"unicorn/prefer-node-protocol": "off"
+			"unicorn/prefer-node-protocol": "off",
+			"@typescript-eslint/naming-convention": "off"
 		},
 		"globals": [
 			"Deno",

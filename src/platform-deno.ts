@@ -13,7 +13,7 @@ export default class PlatformDeno implements Platform {
 		const stdout = await new Promise<string>((resolve, reject) => {
 			let stdout = '';
 			child.stdout.on('data', (data) => {
-				stdout += data;
+				stdout += data as string;
 			});
 			child.once('error', reject);
 			child.once('exit', (code) => {
